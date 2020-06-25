@@ -1,26 +1,32 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      posts: []
+    };
+  }
+
+  // http://127.0.0.1:8000/api/ghostpost/
+
+  render() {
+    return (
+      <div className="App">
+        <h1>Qu33n B's Spilling the Tea!!</h1>
+        {this.state.posts.map((post) => {
+          return <li> {post.post}
+            <br/> {post.boast_or_roast} 
+            <button>👍</button> {post.up_votes}
+            <button>👎</button> {post.down_votes}
+            {post.total_votes}
+            {post.submission_time}
+          </li>
+        })}
+      </div>
+    );
+  }
 }
 
 export default App;
