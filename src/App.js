@@ -9,18 +9,34 @@ class App extends Component {
     };
   }
 
-  // http://127.0.0.1:8000/api/ghostpost/
+  componentDidMount() {
+    fetch('http://127.0.0.1:8000/api/ghostpost/')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data)
+      this.setState({posts: data})
+    })
+  }
+
+  handleLikes(props) {
+    console.log(props)
+  }
 
   render() {
     return (
       <div className="App">
         <h1>Qu33n B's Spilling the Tea!!</h1>
         {this.state.posts.map((post) => {
-          return <li> {post.post}
-            <br/> {post.boast_or_roast} 
-            <button>👍</button> {post.up_votes}
-            <button>👎</button> {post.down_votes}
-            {post.total_votes}
+          console.log(post)
+          return <li key={post.id}> {post.post}
+          <br/> {}
+          {post.boast_or_roast
+          ? <p>Roast</p>
+          : <p>Boast</p>
+      }
+            <button><span role='img' aria-label='likes'>👍</span></button> {post.up_votes}
+            <button><span role='img' aria-label='dislikes'>👎</span></button> {post.down_votes}
+            <p>{post.total_votes}</p>
             {post.submission_time}
           </li>
         })}
