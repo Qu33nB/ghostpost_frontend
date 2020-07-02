@@ -1,4 +1,8 @@
-https://github.com/Qu33nB/ghostpost_backend
+## Backend
+
+The backend for this repo is located at (https://github.com/Qu33nB/ghostpost_backend).
+
+## Created using: 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
